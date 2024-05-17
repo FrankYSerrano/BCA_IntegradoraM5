@@ -8,8 +8,13 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation.findNavController
 import com.example.alkewallet1.R
+import com.example.alkewallet1.databinding.ActivityMainBinding
 
 class aw01_splash : Fragment() {
+
+    //Esto lo añadi
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (arguments != null) {
@@ -29,10 +34,16 @@ class aw01_splash : Fragment() {
 
         val navController = findNavController(view)
 
+
         /**
          * Al hacer click en el Logo el splash te lleva a siguiente pantalla
          * Mientras veo como hacerlo a través de un delay de N segundos
          */
+
+        //Esto lo añadi
+//        binding = ActivityMainBinding.inflate(layoutInflater)
+//        setContentView(binding.root)
+
         val imageView_logo = view.findViewById<ImageView>(R.id.ImageView_id_logo)
         imageView_logo.setOnClickListener { v: View? ->
             navController.navigate(R.id.aw02_signup_login)

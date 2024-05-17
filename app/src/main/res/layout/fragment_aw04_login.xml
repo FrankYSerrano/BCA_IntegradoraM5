@@ -37,7 +37,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="307dp"
-        android:layout_height="70dp"
+        android:layout_height="41dp"
         app:layout_constraintBottom_toBottomOf="@+id/button_signup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.522"
@@ -49,8 +49,8 @@
             android:layout_width="304dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/jua_regular"
-            android:textSize="20dp"
-            android:hint="Ingresar email"/>
+            android:hint="Ingresar email"
+            android:textSize="20dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -69,8 +69,8 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout6"
-        android:layout_width="299dp"
-        android:layout_height="76dp"
+        android:layout_width="295dp"
+        android:layout_height="50dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.482"
@@ -83,8 +83,8 @@
             android:layout_width="304dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/jua_regular"
-            android:textSize="20dp"
-            android:hint="Ingresa tu contraseña"/>
+            android:hint="Ingresa tu contraseña"
+            android:textSize="20dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
