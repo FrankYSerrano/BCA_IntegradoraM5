@@ -11,16 +11,23 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.Navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.alkewallet1.R
 import com.example.alkewallet1.databinding.FragmentAw01SplashBinding
 import com.example.alkewallet1.databinding.FragmentAw04LoginBinding
 import com.example.alkewallet1.databinding.FragmentAw05HomepageBinding
+import com.example.alkewallet1.presentation.adapter.TransactionsAdapter
+import com.example.alkewallet1.presentation.viewmodel.TransactionsMainViewModel
 
 class aw05_homepage : Fragment() {
 
     //Declaración de Binding
     private lateinit var binding: FragmentAw05HomepageBinding
+
+    private val transactionsViewModel: TransactionsMainViewModel
+        by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +51,7 @@ class aw05_homepage : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val navController = findNavController(view)
+
 
         /**
          * Navegación hacia signup_login
@@ -92,6 +100,18 @@ class aw05_homepage : Fragment() {
                 binding.txNotEmpty.visibility = View.VISIBLE
                 binding.txEmpty.visibility = View.GONE
             }
+        }
+
+        binding.rvTransactions.layoutManager = LinearLayoutManager(context)
+        binding.rvTransactions.adapter = TransactionsAdapter()
+//        transactionsViewModel.transactionListLiveData.observe(viewLifecycleOwner) {
+//            transactions -> (binding.rvTransactions.adapter as TransactionsAdapter).transactions
+//        }
+
+        transactionsViewModel.transactionListLiveData.observe(viewLifecycleOwner) { transactions ->
+//            Log.d("AW05_HOMEPAGE", "Transactions: ${transactions.size}")
+
+            (binding.rvTransactions.adapter as TransactionsAdapter).transactions = transactions
         }
 
     }

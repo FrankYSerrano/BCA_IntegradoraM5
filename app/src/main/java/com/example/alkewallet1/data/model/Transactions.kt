@@ -1,8 +1,8 @@
 package com.example.alkewallet1.data.model
 
 data class Transactions(
-    val whoTx: String,
-    val typeTx: String,
+    val whoTx: Int,
+    val typeTx: Int,
     val nameTx: String,
     val timestamp: String,
     val symbolTx: Char,

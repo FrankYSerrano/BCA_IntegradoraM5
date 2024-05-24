@@ -7,7 +7,6 @@ class Validator () {
             val authorizedUser: String = "admin"
             val authorizedPassword: String = "admin"
 
-
             if (userName == authorizedUser && password == authorizedPassword)
                 return true
             else
