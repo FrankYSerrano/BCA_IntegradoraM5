@@ -1,23 +1,21 @@
-package com.example.alkewallet1.fragments
+package com.example.alkewallet1.presentation.ui.fragments
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation.findNavController
 import com.example.alkewallet1.R
-import com.example.alkewallet1.databinding.ActivityMainBinding
 import com.example.alkewallet1.databinding.FragmentAw01SplashBinding
-//import com.example.alkewallet1.databinding.FragmentBlankBinding
+import com.example.alkewallet1.databinding.FragmentAw02SignupLoginBinding
+import com.example.alkewallet1.databinding.FragmentAw03SignupBinding
 
-class aw01_splash : Fragment() {
+class aw03_signup : Fragment() {
 
     //Declaración de Binding
-    private lateinit var binding: FragmentAw01SplashBinding
+    private lateinit var binding: FragmentAw03SignupBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +28,7 @@ class aw01_splash : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentAw01SplashBinding.inflate(inflater, container, false)
+        binding = FragmentAw03SignupBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -40,11 +38,19 @@ class aw01_splash : Fragment() {
         val navController = findNavController(view)
 
         /**
-         * Splash Screen se mantiene por N segundos
+         * Navegación hacia signup
          */
-        val SPLASH_TIME_OUT: Long = 2500
-        Handler(Looper.getMainLooper()).postDelayed({
-            navController.navigate(R.id.aw02_signup_login)
-        }, SPLASH_TIME_OUT)
+        val button_SignUp = binding.buttonSignup
+        button_SignUp.setOnClickListener { v: View? ->
+            navController.navigate(R.id.aw04_login)
+        }
+
+        /**
+         * Navegación hacia login
+         */
+        val button_login = binding.buttonLogin
+        button_login.setOnClickListener { v: View? ->
+            navController.navigate(R.id.aw04_login)
+        }
     }
 }

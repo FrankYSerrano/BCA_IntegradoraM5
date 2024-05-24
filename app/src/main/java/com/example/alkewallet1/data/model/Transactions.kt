@@ -1,4 +1,4 @@
-package com.example.alkewallet1.feat_homepage.data.model
+package com.example.alkewallet1.data.model
 
 data class Transactions(
     val whoTx: String,

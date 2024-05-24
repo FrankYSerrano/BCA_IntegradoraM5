@@ -1,4 +1,4 @@
-package com.example.alkewallet1.feat_request.presentation.ui
+package com.example.alkewallet1.presentation.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,12 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation.findNavController
 import com.example.alkewallet1.R
 import com.example.alkewallet1.databinding.FragmentAw01SplashBinding
-import com.example.alkewallet1.databinding.FragmentAw06RequestBinding
+import com.example.alkewallet1.databinding.FragmentAw07SendBinding
 
-class aw06_request : Fragment() {
+class aw07_send : Fragment() {
 
     //Declaración de Binding
-    private lateinit var binding: FragmentAw06RequestBinding
+    private lateinit var binding: FragmentAw07SendBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +28,7 @@ class aw06_request : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentAw06RequestBinding.inflate(inflater, container, false)
+        binding = FragmentAw07SendBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -48,8 +48,8 @@ class aw06_request : Fragment() {
         /**
          * Navegación hacia homepage
          */
-        val button_request = binding.buttonRequest
-        button_request.setOnClickListener { v: View? ->
+        val button_send = binding.buttonSend
+        button_send.setOnClickListener { v: View? ->
             navController.navigate(R.id.aw05_homepage)
         }
     }

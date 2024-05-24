@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".feat_homepage.presentation.ui.aw05_homepage">
+    tools:context=".presentation.ui.fragments.aw05_homepage">
 
     <RelativeLayout
         android:layout_width="wrap_content"

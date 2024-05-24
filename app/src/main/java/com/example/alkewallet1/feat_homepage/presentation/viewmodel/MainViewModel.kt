@@ -3,7 +3,7 @@ package com.example.alkewallet1.feat_homepage.presentation.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.alkewallet1.feat_homepage.data.model.Transactions
+import com.example.alkewallet1.data.model.Transactions
 
 class MainViewModel: ViewModel() {
 

@@ -1,6 +1,4 @@
-package com.example.alkewallet1.feat_login.domain
-
-import com.example.alkewallet1.feat_login.presentation.viewmodel.MainViewModel
+package com.example.alkewallet1.domain
 
 class Validator () {
 

@@ -1,4 +1,4 @@
-package com.example.alkewallet1.feat_homepage.presentation.ui
+package com.example.alkewallet1.presentation.ui.fragments
 
 import android.os.Bundle
 import android.util.Log

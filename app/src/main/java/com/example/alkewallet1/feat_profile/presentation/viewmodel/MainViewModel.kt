@@ -1,9 +1,9 @@
-package com.example.alkewallet1.feat_login.presentation.viewmodel
+package com.example.alkewallet1.feat_profile.presentation.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.alkewallet1.feat_login.data.model.User
+import com.example.alkewallet1.data.model.User
 
 class MainViewModel: ViewModel() {
     val userList = MutableLiveData<List<User>>()

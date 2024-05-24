@@ -1,4 +1,4 @@
-package com.example.alkewallet1.feat_login.data.model
+package com.example.alkewallet1.data.model
 
 data class User(
     val username: String,

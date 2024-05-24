@@ -1,4 +1,4 @@
-package com.example.alkewallet1
+package com.example.alkewallet1.presentation.ui.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
