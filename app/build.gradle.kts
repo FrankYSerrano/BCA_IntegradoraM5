@@ -43,6 +43,10 @@ android {
 
 dependencies {
 
+    // ViewModel
+    implementation(libs.lifecycle.viewmodel.ktx)
+    // LiveData
+    implementation(libs.lifecycle.livedata.ktx)
 
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)

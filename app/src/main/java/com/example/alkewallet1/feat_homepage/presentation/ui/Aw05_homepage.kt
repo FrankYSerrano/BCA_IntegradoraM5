@@ -1,18 +1,27 @@
-package com.example.alkewallet1.fragments
+package com.example.alkewallet1.feat_homepage.presentation.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.Navigation.findNavController
 import com.example.alkewallet1.R
+import com.example.alkewallet1.databinding.FragmentAw01SplashBinding
+import com.example.alkewallet1.databinding.FragmentAw04LoginBinding
+import com.example.alkewallet1.databinding.FragmentAw05HomepageBinding
 
 class aw05_homepage : Fragment() {
+
+    //Declaración de Binding
+    private lateinit var binding: FragmentAw05HomepageBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (arguments != null) {
@@ -27,7 +36,8 @@ class aw05_homepage : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_aw05_homepage, container, false)
+        binding = FragmentAw05HomepageBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,7 +48,7 @@ class aw05_homepage : Fragment() {
         /**
          * Navegación hacia signup_login
          */
-        val textView_start = view.findViewById<TextView>(R.id.textView_start)
+        val textView_start = binding.textViewStart
         textView_start.setOnClickListener { v: View? ->
             navController.navigate(R.id.aw04_login)
         }
@@ -46,7 +56,7 @@ class aw05_homepage : Fragment() {
         /**
          * Navegación hacia profile
          */
-        val imageView_profile = view.findViewById<ImageView>(R.id.imageView_profile)
+        val imageView_profile = binding.imageViewProfile
         imageView_profile.setOnClickListener { v: View? ->
             navController.navigate(R.id.aw08_profile)
         }
@@ -54,7 +64,7 @@ class aw05_homepage : Fragment() {
         /**
          * Navegación hacia request
          */
-        val button_request = view.findViewById<Button>(R.id.button_request)
+        val button_request = binding.buttonRequest
         button_request.setOnClickListener { v: View? ->
             navController.navigate(R.id.aw06_request)
         }
@@ -62,17 +72,27 @@ class aw05_homepage : Fragment() {
         /**
          * Navegación hacia send
          */
-        val button_send = view.findViewById<Button>(R.id.button_send)
+        val button_send = binding.buttonSend
         button_send.setOnClickListener { v: View? ->
             navController.navigate(R.id.aw07_send)
         }
 
         /**
-         * Navegación hacia send
+         * Limpiar Transacciones
          */
-        val button_limpia = view.findViewById<Button>(R.id.button_limpia)
+        val button_limpia = binding.ImageViewNotifications
         button_limpia.setOnClickListener { v: View? ->
-            navController.navigate(R.id.aw05_homepage_vacio)
+            if(binding.txNotEmpty.visibility == View.VISIBLE){
+//                Log.i("FRANK1", binding.txNotEmpty.visibility.toString())
+//                TO DO: Esto debería de borrar la data
+                binding.txNotEmpty.visibility = View.GONE
+                binding.txEmpty.visibility = View.VISIBLE
+            } else {
+//                Log.i("FRANK2", binding.txNotEmpty.visibility.toString())
+                binding.txNotEmpty.visibility = View.VISIBLE
+                binding.txEmpty.visibility = View.GONE
+            }
         }
+
     }
 }

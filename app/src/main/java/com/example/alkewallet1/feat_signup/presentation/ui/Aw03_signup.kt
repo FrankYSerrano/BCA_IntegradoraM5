@@ -1,4 +1,4 @@
-package com.example.alkewallet1.fragments
+package com.example.alkewallet1.feat_signup.presentation.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,11 +10,12 @@ import androidx.navigation.Navigation.findNavController
 import com.example.alkewallet1.R
 import com.example.alkewallet1.databinding.FragmentAw01SplashBinding
 import com.example.alkewallet1.databinding.FragmentAw02SignupLoginBinding
+import com.example.alkewallet1.databinding.FragmentAw03SignupBinding
 
-class aw02_signup_login : Fragment() {
+class aw03_signup : Fragment() {
 
     //Declaración de Binding
-    private lateinit var binding: FragmentAw02SignupLoginBinding
+    private lateinit var binding: FragmentAw03SignupBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +28,7 @@ class aw02_signup_login : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        binding = FragmentAw02SignupLoginBinding.inflate(inflater, container, false)
+        binding = FragmentAw03SignupBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -41,7 +42,7 @@ class aw02_signup_login : Fragment() {
          */
         val button_SignUp = binding.buttonSignup
         button_SignUp.setOnClickListener { v: View? ->
-            navController.navigate(R.id.aw03_signup)
+            navController.navigate(R.id.aw04_login)
         }
 
         /**
