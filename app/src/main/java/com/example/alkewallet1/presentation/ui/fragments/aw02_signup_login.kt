@@ -4,11 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation.findNavController
 import com.example.alkewallet1.R
-import com.example.alkewallet1.databinding.FragmentAw01SplashBinding
 import com.example.alkewallet1.databinding.FragmentAw02SignupLoginBinding
 
 class aw02_signup_login : Fragment() {

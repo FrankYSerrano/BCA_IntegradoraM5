@@ -12,7 +12,9 @@ import com.example.alkewallet1.data.model.Transactions
 
 class TransactionsAdapter() : RecyclerView.Adapter<TransactionsAdapter.TransactionViewHolder>() {
 
-    // Atributo de la clase
+    /**
+     * transactions: Variable que almacenará la lista de transacciones
+     */
     var transactions = mutableListOf<Transactions>()
         @SuppressLint("NotifyDataSetChanged")
         set(value){
@@ -28,6 +30,7 @@ class TransactionsAdapter() : RecyclerView.Adapter<TransactionsAdapter.Transacti
                 .inflate(R.layout.fragment_aw09_transactions, parent, false)
             return TransactionViewHolder(view)
         }
+
     override fun onBindViewHolder(holder: TransactionViewHolder, position: Int) {
         val transaction: Transactions = transactions[position]
         holder.userPhoto.setImageResource(transaction.whoTx)

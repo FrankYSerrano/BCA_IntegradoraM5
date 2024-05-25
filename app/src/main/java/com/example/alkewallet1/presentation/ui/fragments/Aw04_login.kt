@@ -7,15 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation.findNavController
 import com.example.alkewallet1.R
 import com.example.alkewallet1.databinding.FragmentAw04LoginBinding
-import com.example.alkewallet1.domain.Validator
+import com.example.alkewallet1.presentation.viewmodel.AuthMainViewModel
 
 class aw04_login : Fragment() {
 
     //Declaración de Binding
     private lateinit var binding: FragmentAw04LoginBinding
+
+    private val validator: AuthMainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,11 +74,16 @@ class aw04_login : Fragment() {
          */
         val button_login = binding.buttonLogin
         button_login.setOnClickListener { v: View? ->
-            val verifica: Boolean = Validator.validador(
-                binding.textInputEmail.text.toString(),
+
+            var valida: Boolean = false
+            valida = validator.validateUser(binding.textInputEmail.text.toString(),
                 binding.textInputPassword.text.toString())
-            if (verifica) navController.navigate(R.id.aw05_homepage)
-            else Toast.makeText(context, "Datos incorrectos", Toast.LENGTH_SHORT).show()
+
+            if (valida) {
+                navController.navigate(R.id.aw05_homepage)
+            } else {
+                Toast.makeText(context, "Datos incorrectos", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
