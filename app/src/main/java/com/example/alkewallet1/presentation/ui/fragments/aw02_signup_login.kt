@@ -1,19 +1,18 @@
-package com.example.alkewallet1.fragments
+package com.example.alkewallet1.presentation.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation.findNavController
 import com.example.alkewallet1.R
-import com.example.alkewallet1.databinding.ActivityMainBinding
+import com.example.alkewallet1.databinding.FragmentAw02SignupLoginBinding
 
-class aw01_splash : Fragment() {
+class aw02_signup_login : Fragment() {
 
-    //Esto lo añadi
-    private lateinit var binding: ActivityMainBinding
+    //Declaración de Binding
+    private lateinit var binding: FragmentAw02SignupLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +25,8 @@ class aw01_splash : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_aw01_splash, container, false)
+        binding = FragmentAw02SignupLoginBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -34,19 +34,20 @@ class aw01_splash : Fragment() {
 
         val navController = findNavController(view)
 
+        /**
+         * Navegación hacia signup
+         */
+        val button_SignUp = binding.buttonSignup
+        button_SignUp.setOnClickListener { v: View? ->
+            navController.navigate(R.id.aw03_signup)
+        }
 
         /**
-         * Al hacer click en el Logo el splash te lleva a siguiente pantalla
-         * Mientras veo como hacerlo a través de un delay de N segundos
+         * Navegación hacia login
          */
-
-        //Esto lo añadi
-//        binding = ActivityMainBinding.inflate(layoutInflater)
-//        setContentView(binding.root)
-
-        val imageView_logo = view.findViewById<ImageView>(R.id.ImageView_id_logo)
-        imageView_logo.setOnClickListener { v: View? ->
-            navController.navigate(R.id.aw02_signup_login)
+        val button_login = binding.buttonLogin
+        button_login.setOnClickListener { v: View? ->
+            navController.navigate(R.id.aw04_login)
         }
     }
 }

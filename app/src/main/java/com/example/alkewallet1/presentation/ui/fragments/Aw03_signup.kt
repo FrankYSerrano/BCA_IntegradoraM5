@@ -1,4 +1,4 @@
-package com.example.alkewallet1.fragments
+package com.example.alkewallet1.presentation.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,8 +8,15 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation.findNavController
 import com.example.alkewallet1.R
+import com.example.alkewallet1.databinding.FragmentAw01SplashBinding
+import com.example.alkewallet1.databinding.FragmentAw02SignupLoginBinding
+import com.example.alkewallet1.databinding.FragmentAw03SignupBinding
 
-class aw02_signup_login : Fragment() {
+class aw03_signup : Fragment() {
+
+    //Declaración de Binding
+    private lateinit var binding: FragmentAw03SignupBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (arguments != null) {
@@ -21,7 +28,8 @@ class aw02_signup_login : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_aw02_signup_login, container, false)
+        binding = FragmentAw03SignupBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -32,15 +40,15 @@ class aw02_signup_login : Fragment() {
         /**
          * Navegación hacia signup
          */
-        val button_SignUp = view.findViewById<Button>(R.id.button_signup)
+        val button_SignUp = binding.buttonSignup
         button_SignUp.setOnClickListener { v: View? ->
-            navController.navigate(R.id.aw03_signup)
+            navController.navigate(R.id.aw04_login)
         }
 
         /**
          * Navegación hacia login
          */
-        val button_login = view.findViewById<Button>(R.id.button_login)
+        val button_login = binding.buttonLogin
         button_login.setOnClickListener { v: View? ->
             navController.navigate(R.id.aw04_login)
         }

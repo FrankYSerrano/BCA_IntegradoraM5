@@ -1,4 +1,4 @@
-package com.example.alkewallet1.fragments
+package com.example.alkewallet1.presentation.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,8 +9,14 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation.findNavController
 import com.example.alkewallet1.R
+import com.example.alkewallet1.databinding.FragmentAw01SplashBinding
+import com.example.alkewallet1.databinding.FragmentAw08ProfileBinding
 
 class aw08_profile : Fragment() {
+
+    //Declaración de Binding
+    private lateinit var binding: FragmentAw08ProfileBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (arguments != null) {
@@ -22,7 +28,8 @@ class aw08_profile : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_aw08_profile, container, false)
+        binding = FragmentAw08ProfileBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -33,7 +40,7 @@ class aw08_profile : Fragment() {
         /**
          * Navegación hacia homepage
          */
-        val imageView_back = view.findViewById<ImageView>(R.id.ImageView_back)
+        val imageView_back = binding.ImageViewBack
         imageView_back.setOnClickListener { v: View? ->
             navController.navigate(R.id.aw05_homepage)
         }
@@ -41,7 +48,7 @@ class aw08_profile : Fragment() {
         /**
          * Navegación hacia Información (Mientras al Splash!)
          */
-        val button_information = view.findViewById<Button>(R.id.button_information)
+        val button_information = binding.buttonInformation
         button_information.setOnClickListener { v: View? ->
             navController.navigate(R.id.aw01_splash)
         }
@@ -49,7 +56,7 @@ class aw08_profile : Fragment() {
         /**
          * Navegación hacia Cards (Mientras al Splash!)
          */
-        val button_cards = view.findViewById<Button>(R.id.button_cards)
+        val button_cards = binding.buttonCards
         button_cards.setOnClickListener { v: View? ->
             navController.navigate(R.id.aw01_splash)
         }
@@ -57,7 +64,7 @@ class aw08_profile : Fragment() {
         /**
          * Navegación hacia Opciones (Mientras al Splash!)
          */
-        val button_options = view.findViewById<Button>(R.id.button_options)
+        val button_options = binding.buttonOptions
         button_options.setOnClickListener { v: View? ->
             navController.navigate(R.id.aw01_splash)
         }
@@ -65,7 +72,7 @@ class aw08_profile : Fragment() {
         /**
          * Navegación hacia Help (Mientras al Splash!)
          */
-        val button_help = view.findViewById<Button>(R.id.button_help)
+        val button_help = binding.buttonHelp
         button_help.setOnClickListener { v: View? ->
             navController.navigate(R.id.aw01_splash)
         }

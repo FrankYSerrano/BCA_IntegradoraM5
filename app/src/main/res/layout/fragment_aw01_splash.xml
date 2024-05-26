@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.aw01_splash"
+    tools:context=".presentation.ui.fragments.aw01_splash"
     android:background="@color/azul_alkewallet">
 
     <ImageView

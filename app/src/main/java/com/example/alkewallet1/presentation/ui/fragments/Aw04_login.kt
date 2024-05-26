@@ -1,16 +1,25 @@
-package com.example.alkewallet1.fragments
+package com.example.alkewallet1.presentation.ui.fragments
 
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation.findNavController
 import com.example.alkewallet1.R
+import com.example.alkewallet1.databinding.FragmentAw04LoginBinding
+import com.example.alkewallet1.presentation.viewmodel.AuthMainViewModel
 
 class aw04_login : Fragment() {
+
+    //Declaración de Binding
+    private lateinit var binding: FragmentAw04LoginBinding
+
+    private val validator: AuthMainViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (arguments != null) {
@@ -22,8 +31,8 @@ class aw04_login : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_aw04_login, container, false)
-        return view
+        binding = FragmentAw04LoginBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -34,8 +43,7 @@ class aw04_login : Fragment() {
         /**
          * Navegación hacia signup
          */
-        val button_signUp = view.findViewById<Button>(R.id.button_signup)
-
+        val button_signUp = binding.buttonSignup
         button_signUp?.setOnClickListener { // handle your click here
             navController.navigate(R.id.aw03_signup)
         }
@@ -64,17 +72,18 @@ class aw04_login : Fragment() {
         /**
          * Navegación hacia homepage
          */
-        val button_login = view.findViewById<Button>(R.id.button_login)
+        val button_login = binding.buttonLogin
         button_login.setOnClickListener { v: View? ->
-            navController.navigate(R.id.aw05_homepage)
-        }
 
-        /**
-         * Navegación hacia signup
-         */
-        val button_signup = view.findViewById<Button>(R.id.button_signup)
-        button_signup.setOnClickListener { v: View? ->
-            navController.navigate(R.id.aw03_signup)
+            var valida: Boolean = false
+            valida = validator.validateUser(binding.textInputEmail.text.toString(),
+                binding.textInputPassword.text.toString())
+
+            if (valida) {
+                navController.navigate(R.id.aw05_homepage)
+            } else {
+                Toast.makeText(context, "Datos incorrectos", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

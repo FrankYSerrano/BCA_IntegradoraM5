@@ -46,6 +46,7 @@
         app:layout_constraintVertical_bias="0.161">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEmail"
             android:layout_width="304dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/jua_regular"
@@ -80,6 +81,7 @@
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputPassword"
             android:layout_width="304dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/jua_regular"

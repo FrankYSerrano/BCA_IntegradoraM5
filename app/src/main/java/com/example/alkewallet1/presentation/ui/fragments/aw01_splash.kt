@@ -1,15 +1,21 @@
-package com.example.alkewallet1.fragments
+package com.example.alkewallet1.presentation.ui.fragments
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation.findNavController
 import com.example.alkewallet1.R
+import com.example.alkewallet1.databinding.FragmentAw01SplashBinding
 
-class aw05_homepage_vacio : Fragment() {
+class aw01_splash : Fragment() {
+
+    //Declaración de Binding
+    private lateinit var binding: FragmentAw01SplashBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (arguments != null) {
@@ -21,7 +27,8 @@ class aw05_homepage_vacio : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_aw05_homepage_vacio, container, false)
+        binding = FragmentAw01SplashBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -30,11 +37,11 @@ class aw05_homepage_vacio : Fragment() {
         val navController = findNavController(view)
 
         /**
-         * Navegación hacia profile
+         * Splash Screen se mantiene por N segundos
          */
-        val imageView_profile = view.findViewById<ImageView>(R.id.imageView_profile)
-        imageView_profile.setOnClickListener { v: View? ->
-            navController.navigate(R.id.aw08_profile)
-        }
+        val SPLASH_TIME_OUT: Long = 2500
+        Handler(Looper.getMainLooper()).postDelayed({
+            navController.navigate(R.id.aw02_signup_login)
+        }, SPLASH_TIME_OUT)
     }
 }

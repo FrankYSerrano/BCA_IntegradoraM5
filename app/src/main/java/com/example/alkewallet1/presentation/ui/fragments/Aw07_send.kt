@@ -1,15 +1,22 @@
-package com.example.alkewallet1.fragments
+package com.example.alkewallet1.presentation.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation.findNavController
 import com.example.alkewallet1.R
+import com.example.alkewallet1.databinding.FragmentAw01SplashBinding
+import com.example.alkewallet1.databinding.FragmentAw07SendBinding
 
-class aw03_signup : Fragment() {
+class aw07_send : Fragment() {
+
+    //Declaración de Binding
+    private lateinit var binding: FragmentAw07SendBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (arguments != null) {
@@ -21,7 +28,8 @@ class aw03_signup : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_aw03_signup, container, false)
+        binding = FragmentAw07SendBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -30,19 +38,19 @@ class aw03_signup : Fragment() {
         val navController = findNavController(view)
 
         /**
-         * Navegación hacia signup
+         * Navegación hacia homepage
          */
-        val button_SignUp = view.findViewById<Button>(R.id.button_signup)
-        button_SignUp.setOnClickListener { v: View? ->
-            navController.navigate(R.id.aw04_login)
+        val imageView_back = binding.ImageViewBack
+        imageView_back.setOnClickListener { v: View? ->
+            navController.navigate(R.id.aw05_homepage)
         }
 
         /**
-         * Navegación hacia login
+         * Navegación hacia homepage
          */
-        val button_login = view.findViewById<Button>(R.id.button_login)
-        button_login.setOnClickListener { v: View? ->
-            navController.navigate(R.id.aw04_login)
+        val button_send = binding.buttonSend
+        button_send.setOnClickListener { v: View? ->
+            navController.navigate(R.id.aw05_homepage)
         }
     }
 }
