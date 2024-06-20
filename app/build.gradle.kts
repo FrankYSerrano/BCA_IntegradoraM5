@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -50,6 +51,27 @@ dependencies {
     implementation(libs.lifecycle.viewmodel.ktx)
     // LiveData
     implementation(libs.lifecycle.livedata.ktx)
+
+    // Retrofit
+// Ref: https://square.github.io/retrofit/
+    implementation(libs.retrofit)
+// GSON para convertir JSON a Kotlin
+// Ref: https://github.com/google/gson
+    implementation(libs.gson)
+// Retrofit the solicitará un Factory y este necesita Retrofit GSON Converter
+// Ref: https://github.com/square/retrofit/tree/trunk/retrofit-converters/gson
+    implementation(libs.converter.gson)
+// Picasso
+// Ref: https://github.com/square/picasso)
+    implementation(libs.picasso)
+// Room (Base de Datos)
+    implementation(libs.room.runtime)
+// To use Kotlin Symbol Processing (KSP)
+    ksp(libs.room.compiler)
+// Kotlin Extensions and Coroutines support for Room
+    implementation(libs.room.ktx)
+
+
 
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)

@@ -8,17 +8,39 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation.findNavController
 import com.example.alkewallet1.R
+import com.example.alkewallet1.data.local.database.AppDatabase
+import com.example.alkewallet1.data.network.api.UserApi
+import com.example.alkewallet1.data.network.retrofit.RetrofitHelper
+import com.example.alkewallet1.data.repository.UserRepositoryImplementation
 import com.example.alkewallet1.databinding.FragmentAw04LoginBinding
+import com.example.alkewallet1.domain.UserUseCase
 import com.example.alkewallet1.presentation.viewmodel.AuthMainViewModel
+import com.example.alkewallet1.presentation.viewmodel.SignUpMainViewModel
+import com.example.alkewallet1.presentation.viewmodel.ViewModelFactory
 
 class aw04_login : Fragment() {
 
     //Declaración de Binding
     private lateinit var binding: FragmentAw04LoginBinding
 
-    private val validator: AuthMainViewModel by viewModels()
+    private lateinit var viewModel: AuthMainViewModel
+
+    private fun init() {
+        val apiService = RetrofitHelper.getRetrofit().create(UserApi::class.java)
+        val application = requireActivity().application
+        val dataBase = AppDatabase.getDatabase(application)
+        val repository = UserRepositoryImplementation(apiService, dataBase.userDao())
+        val useCase = UserUseCase(repository)
+        val viewModelFactory = ViewModelFactory(useCase)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(AuthMainViewModel::class.java)
+    }
+
+
+//    private val validator: AuthMainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +61,8 @@ class aw04_login : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val navController = findNavController(view)
+
+        init()
 
         /**
          * Navegación hacia signup
@@ -76,14 +100,33 @@ class aw04_login : Fragment() {
         button_login.setOnClickListener { v: View? ->
 
             var valida: Boolean = false
-            valida = validator.validateUser(binding.textInputEmail.text.toString(),
-                binding.textInputPassword.text.toString())
 
-            if (valida) {
-                navController.navigate(R.id.aw05_homepage)
-            } else {
-                Toast.makeText(context, "Datos incorrectos", Toast.LENGTH_SHORT).show()
+            val userName = binding.textInputEmail.text.toString()
+            val password = binding.textInputPassword.text.toString()
+
+            viewModel.loginUserOnClick(userName, password)
+
+            viewModel.loginUserLV.observe(viewLifecycleOwner) { results ->
+                results.onSuccess { response ->
+                    val token = response.body()?.accessToken.toString()
+                    viewModel.saveUserInDB(userName, password, token)
+                    navController.navigate(R.id.aw05_homepage)
+                }
+                results.onFailure {
+                    // MOSTRAR TOAST CON ERROR
+                }
+
             }
+
+
+//            valida = validator.validateUser(binding.textInputEmail.text.toString(),
+                binding.textInputPassword.text.toString()
+
+//            if (valida) {
+//                navController.navigate(R.id.aw05_homepage)
+//            } else {
+//                Toast.makeText(context, "Datos incorrectos", Toast.LENGTH_SHORT).show()
+//            }
         }
     }
 }

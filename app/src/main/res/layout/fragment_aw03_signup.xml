@@ -46,6 +46,7 @@
         app:layout_constraintVertical_bias="0.055">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/TVUserName"
             android:layout_width="match_parent"
             android:layout_height="28dp"
             android:fontFamily="@font/jua_regular"
@@ -81,6 +82,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
+            android:id="@+id/TVUserLastName"
             android:layout_height="28dp"
             android:fontFamily="@font/jua_regular"
             android:textSize="20dp"
@@ -115,6 +117,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
+            android:id="@+id/TVUserEmail"
             android:layout_height="34dp"
             android:fontFamily="@font/jua_regular"
             android:textSize="20dp"
@@ -150,6 +153,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
+            android:id="@+id/TVUserPassword"
             android:layout_height="32dp"
             android:fontFamily="@font/jua_regular"
             android:textSize="20dp"
